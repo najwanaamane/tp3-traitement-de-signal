@@ -56,4 +56,73 @@ title("signal filtré")
 </pre>
 
 4-	  Tracer le nouveau signal ecg1, et noter les différences par rapport au signal d’origine.
+<pre>
+
+ecg1_freq = h.*y;
+ecg1 =ifft(ecg1_freq,"symmetric");
+
+plot(t,ecg1);
+title("ecg1")
+</pre>
+
+**Suppression des interférences des lignes électriques**
+
+50Hz Souvent, l'ECG est contaminé par un bruit du secteur 50 Hz qui doit être supprimé. 
+5. Appliquer un filtre Notch idéal pour supprimer cette composante. Les filtres Notch sont utilisés pour rejeter une seule fréquence d'une bande de fréquence donnée. 
+<pre>
+
+Notch = ones(size(x));
+fcn = 50;
+index_hcn = ceil(fcn*N/fs)+1;
+Notch(index_hcn)=0;
+Notch(index_hcn+2)=0;
+ecg2_freq = Notch.*fft(ecg);
+ecg2 =ifft(ecg2_freq,"symmetric");
+subplot(3,3,5)
+plot(t,ecg);
+xlim([0.5 1.5])
+title("signal filtré 50hz")
+</pre>
+
+6. Visualiser le signal ecg2 après filtrage
+<pre>
+
+plot(t,ecg2);
+xlim([0.5 1.5])
+</pre>
+
+**Amélioration du rapport signal sur bruit** 
+7. Chercher un compromis sur la fréquence de coupure, qui permettra de préserver la forme du signal ECG et réduire au maximum le bruit. Tester différents choix, puis tracer et commenter les résultats.
+<pre>
+pass_bas = zeros(size(x));
+fcb = 30;
+index_hcb = ceil(fcb*N/fs);
+pass_bas(1:index_hcb)=1;
+pass_bas(N-index_hcb+1:N)=1;
+
+ecg3_freq = pass_bas.*fft(ecg2);
+ecg3 =ifft(ecg3_freq,"symmetric");
+subplot(3,3,7)
+plot(t,ecg,"linewidth",1.5);
+xlim([0.5 1.5])
+subplot(3,3,8)
+plot(t,ecg-ecg3);
+xlim([0.5 1.5])
+</pre>
+
+ 8. Visualiser une période du nouveau signal filtré ecg3 et identifier autant d'ondes que possible dans ce signal (Voir la partie introduction).
+<pre>
+
+plot(t,ecg-ecg3);
+xlim([0.5 1.5])
+</pre>
+Identification de la fréquence cardiaque avec la fonction d’autocorrélation 
+9. Ecrire un programme permettant de calculer l’autocorrélation du signal ECG, puis de chercher cette fréquence cardiaque de façon automatique. Utiliser ce programme sur le signal traité ecg3 ou ecg2 et sur le signal ECG non traité. NB : il faut limiter l’intervalle de recherche à la plage possible de la fréquence cardiaque. 
+<pre>
+[c,lags] = xcorr(ecg3,ecg3);
+stem(lags/fs,c)
+</pre>
+
+10. Votre programme trouve-t-il le bon pouls ? Commenter.
+
 
