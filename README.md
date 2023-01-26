@@ -132,3 +132,7 @@ stem(lags/fs,c)
 
 ![10](https://user-images.githubusercontent.com/86806375/214949171-bc5ce28b-7b9e-4dab-9d17-1d5d1561426e.JPG)
 
+**Conclusion**
+
+Ce rapport a décrit les différentes étapes de traitement d'un signal ECG utilisant Matlab, avec pour objectif de supprimer le bruit et de calculer la fréquence cardiaque. La méthode choisie était l'analyse de la transformée de Fourier, et les étapes décrites ont montré comment supprimer efficacement le bruit. Enfin, la méthode de calcul de la fréquence cardiaque par autocorrélation a montré qu'il était possible de calculer précisément la fréquence cardiaque à partir d'un signal ECG filtré.
+
