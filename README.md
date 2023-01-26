@@ -128,9 +128,9 @@ Identification de la fréquence cardiaque avec la fonction d’autocorrélation
 stem(lags/fs,c)
 </pre>
 
-10. Votre programme trouve-t-il le bon pouls ? Commenter.
+10. Votre programme trouve-t-il le bon pouls?
+![100](https://user-images.githubusercontent.com/86806375/214953925-c3e1f420-3011-47ed-b39a-0089d967f0ca.JPG)
 
-![10](https://user-images.githubusercontent.com/86806375/214949171-bc5ce28b-7b9e-4dab-9d17-1d5d1561426e.JPG)
 
 **Conclusion**
 
