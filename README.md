@@ -30,7 +30,8 @@ title("le signal ECG");
 
 </pre>
 
-// …
+![2](https://user-images.githubusercontent.com/86806375/214948912-1deff36d-9721-4fd3-9bf1-9d2bd3dd7131.JPG)
+
 
 3-	  Pour supprimer les bruits à très basse fréquence dues aux mouvements du corps, on utilisera un filtre idéal passe-haut. Pour ce faire, calculer tout d’abord la TFD du signal ECG, régler les fréquences inférieures à 0.5Hz à zéro, puis effectuer une TFDI pour restituer le signal filtré.
 
@@ -64,6 +65,8 @@ ecg1 =ifft(ecg1_freq,"symmetric");
 plot(t,ecg1);
 title("ecg1")
 </pre>
+![4l](https://user-images.githubusercontent.com/86806375/214948967-a419463a-8932-427c-a36b-cb8399de8afe.JPG)
+![42](https://user-images.githubusercontent.com/86806375/214949208-75fe8e32-f55e-417a-a563-80abd8f1d399.JPG)
 
 **Suppression des interférences des lignes électriques**
 
@@ -90,6 +93,7 @@ title("signal filtré 50hz")
 plot(t,ecg2);
 xlim([0.5 1.5])
 </pre>
+![6](https://user-images.githubusercontent.com/86806375/214949087-0f051162-f1ea-4ebd-9a5a-43bc6d7ab2a9.JPG)
 
 **Amélioration du rapport signal sur bruit** 
 7. Chercher un compromis sur la fréquence de coupure, qui permettra de préserver la forme du signal ECG et réduire au maximum le bruit. Tester différents choix, puis tracer et commenter les résultats.
@@ -109,6 +113,7 @@ subplot(3,3,8)
 plot(t,ecg-ecg3);
 xlim([0.5 1.5])
 </pre>
+![7](https://user-images.githubusercontent.com/86806375/214949121-0147f867-cca8-4cea-b3ee-07462b49e5b8.JPG)
 
  8. Visualiser une période du nouveau signal filtré ecg3 et identifier autant d'ondes que possible dans ce signal (Voir la partie introduction).
 <pre>
@@ -125,4 +130,5 @@ stem(lags/fs,c)
 
 10. Votre programme trouve-t-il le bon pouls ? Commenter.
 
+![10](https://user-images.githubusercontent.com/86806375/214949171-bc5ce28b-7b9e-4dab-9d17-1d5d1561426e.JPG)
 
