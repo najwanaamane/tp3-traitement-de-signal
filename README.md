@@ -129,6 +129,7 @@ stem(lags/fs,c)
 </pre>
 
 10. Votre programme trouve-t-il le bon pouls?
+
 ![100](https://user-images.githubusercontent.com/86806375/214953925-c3e1f420-3011-47ed-b39a-0089d967f0ca.JPG)
 
 
